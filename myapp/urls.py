@@ -24,4 +24,4 @@ urlpatterns = [
     path('paymentdone/',views.payment_done,name="payment_done"),
     path('dashboard/',views.dashboard,name="dashboard"),
     
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-sw0)1)#m)rp-#&yk#%q9q(b+m)&s%@5-ah_w9=h8_8kv09pify
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["mercado-ecommerce.vercel.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     
 ]
 
@@ -124,6 +125,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
+STATIC_ROOT = BASE_DIR / 'productionfiles'
 
 
 # Static files (CSS, JavaScript, Images)
