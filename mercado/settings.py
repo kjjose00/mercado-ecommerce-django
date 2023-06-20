@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sw0)1)#m)rp-#&yk#%q9q(b+m)&s%@5-ah_w9=h8_8kv09pify'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["mercado-ecommerce.vercel.app"]
 
