@@ -1,0 +1,73 @@
+
+{% load tailwind_tags %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>MERCADO | E-COMMERCE WEBSITE</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'myapp/images/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'myapp/images/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'myapp/images/favicon.ico' %}">
+	<link rel="manifest" href="{% static 'myapp/images/site.webmanifest' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+  rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<script src="https://cdn.tailwindcss.com/3.3.0"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
+      },
+    },
+    corePlugins: {
+      preflight: false,
+    },
+  };
+</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Ibarra+Real+Nova:ital,wght@0,700;1,600&family=Montserrat:wght@300;400;500;600&family=Open+Sans:ital,wght@0,800;1,300;1,400;1,800&family=Oswald&family=Pacifico&family=Roboto+Mono&family=The+Nautigal&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Ibarra+Real+Nova:ital,wght@0,700;1,600&family=Montserrat:wght@300;400;500;600&family=Open+Sans:ital,wght@0,800;1,300;1,400;1,800&family=Oswald&family=Pacifico&family=Roboto+Mono&family=Source+Serif+Pro&family=The+Nautigal&display=swap');
+      </style>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-100">
+    
+    {% block home %}{% endblock %}
+    {% block organic_fruits %}{% endblock %}
+    {% block organic_vegetables %}{% endblock %}
+    {% block register %}{% endblock %}
+    {% block cart %}{% endblock %}
+    {% block empty_cart %}{% endblock %}
+    {% block shipping_address %}{% endblock %}
+    {% block payment_page %}{% endblock %}
+    {% block paymentdone %}{% endblock %}
+    {% block dashboard %}{% endblock %}
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    </body>
+</html>

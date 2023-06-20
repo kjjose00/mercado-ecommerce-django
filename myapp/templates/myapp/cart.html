@@ -1,0 +1,218 @@
+{% extends 'myapp/index.html' %}
+{% block cart %}
+{% include 'myapp/navbar.html' %}
+<h1 class="text-5xl text-center pt-10 pb-10 font-black text-gray-500 bg-gray-100">Cart<span id="cart_count">({{cart_count}})</span></h1>
+
+<div class="mx-auto h-auto flex py-12 bg-gray-100" id="cart_master_div">
+
+    <div class="w-[65%] h-full">
+        
+<div class="sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ml-4">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Action</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Image</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Product
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Qty<span class="capitalize">(Kg)</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Discount
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Subtotal
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in cart %}
+            <tr class="border-2 dark:bg-gray-800 dark:border-gray-700 bg-white dark:hover:bg-blue-800" id="cart_item{{c.id}}">
+                <script>
+                    function delete_cartitem(cartId){
+                        // Send an AJAX POST request to the Django view
+                        $.ajax({
+                                url: `/delete_cart_item/${cartId}/`,  // Replace with your Django view URL
+                                dataType:'json',
+                                
+                                
+                                success: function(response) {
+                                // Update the cart quantity in the HTML
+                                console.log(response);
+                                
+
+                                $(`#cart_item${cartId}`).remove();
+
+
+                                $(`#subtotal`).text(response.subtotal);
+
+                                if(response.subtotal===0){
+                                    window.location.href='{% url "cart" %}';
+                                }
+                                
+                                $(`#total`).text(response.total);
+                                $('#cart_count').text(`(${response.cart_count})`)
+
+
+
+                                },
+                                error: function(xhr, errmsg, err) {
+                                // Handle the error
+                                console.log(errmsg);
+                                }
+                            });
+                            }
+
+
+                    
+                </script>
+                <td class="pl-12">
+                    <button class="" onclick="delete_cartitem({{c.id}})"><i class="fa-solid fa-rectangle-xmark text-3xl hover:text-red-500"></i></button>
+                </td>
+                <td class="w-32 p-4">
+                    <img src="{{c.product.product_image.url}}" alt="Apple Watch">
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {{c.product.product_name}}
+                </td>
+                <td class="px-6 py-4">
+                    <form class="flex items-center space-x-3" id="change_quantity{{c.product.id}}" method="POST">
+                        {% csrf_token %}
+                        <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button" onclick="decreaseCartQuantity({{c.id}})">
+                            <script>
+                                function decreaseCartQuantity(cartId) {
+                                            // Send an AJAX POST request to the Django view
+                                            $.ajax({
+                                                url: `/decrease_cart_qty/${cartId}/`,  // Replace with your Django view URL
+                                                type: "POST",
+                                                data: {
+                                                
+                                                csrfmiddlewaretoken: '{{ csrf_token }}'  // Replace with the actual CSRF token
+                                                
+                                                },
+                                                success: function(response) {
+                                                // Update the cart quantity in the HTML
+                                                console.log(response);
+                                                $(`#qty${cartId}`).val(response.cart_quantity);
+                                                $(`#difference${cartId}`).text(response.cart_diff);
+                                                
+
+                                                $(`#subtotal`).text(response.subtotal);
+                                
+                                                $(`#total`).text(response.total);
+                                                },
+                                                error: function(xhr, errmsg, err) {
+                                                // Handle the error
+                                                console.log(errmsg);
+                                                }
+                                            });
+                                            }
+                
+                            </script>
+                            <span class="sr-only">Quantity button</span>
+                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div>
+                            <input type="number" id="qty{{c.id}}" class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 turnoff_arrows" value="{{c.quantity}}" min="1" max="100" required readonly>
+                        </div>
+                        <button id="increase_quantity{{c.id}}" class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button" onclick="increaseCartQuantity({{c.id}})">
+                    
+
+                                
+            <script>
+                function increaseCartQuantity(cartId) {
+                            // Send an AJAX POST request to the Django view
+                            $.ajax({
+                                url: `/increase_cart_qty/${cartId}/`,  // Replace with your Django view URL
+                                type: "POST",
+                                data: {
+                                
+                                csrfmiddlewaretoken: '{{ csrf_token }}'  // Replace with the actual CSRF token
+                                
+                                },
+                                success: function(response) {
+                                // Update the cart quantity in the HTML
+                                console.log(response);
+                                $(`#qty${cartId}`).val(response.cart_quantity);
+
+                                $(`#difference${cartId}`).text(response.cart_diff);
+
+                                $(`#subtotal`).text(response.subtotal);
+                                
+                                $(`#total`).text(response.total);
+
+
+
+                                },
+                                error: function(xhr, errmsg, err) {
+                                // Handle the error
+                                console.log(errmsg);
+                                }
+                            });
+                            }
+
+            </script>
+                            <span class="sr-only">Quantity button</span>
+                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </form>
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {{c.product.product_price}}
+                </td>
+                <td class="px-6 py-4">
+                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">{{c.product.product_discount}}</a>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="#" class="font-medium hover:underline" id="difference{{c.id}}">{{c.difference}}</a>
+                </td>
+            </tr>
+            
+            {% endfor %}
+            
+            
+            
+            
+        </tbody>
+    </table>
+</div>
+
+
+    </div>
+    <div class="border-left h-full w-[27%] px-12 bg-white ml-8 border-2 rounded-md">
+        
+        <h1 class="text-center text-3xl -mt-20 font-extrabold text-green-500 py-6">Cart Totals</h1>
+        <div class="flex items-center mt-20">
+            <h1 class="font-bold text-gray-400">Subtotals</h1>
+            <p class="ml-28" id="subtotal">₹ {{subtotal}}</p>
+        </div>
+        <div class="flex items-center mt-10">
+            <h1 class="font-bold text-gray-400">Delivery Charges</h1>
+            <p class="ml-14">₹ 50</p>
+        </div>
+        <hr class="mr-4 my-5 bg-gray-500 h-[4px]">
+        <div class="flex items-center">
+            <h1 class="font-bold">Total</h1>
+            <p class="ml-36 font-bold" id="total">₹ {{total}}</p>
+        </div>   
+        <a href="{% url 'add_shipping_address' %}" class="capitalize my-16 bg-blue-700 text-white px-5 py-3 rounded block text-center">place order</a>         
+    </div>
+</div>
+  ​
+
+
+
+
+
+{% include 'myapp/footer.html' %}
+
+{% endblock %}

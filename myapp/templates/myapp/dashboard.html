@@ -1,0 +1,62 @@
+{% extends 'myapp/index.html' %}
+
+{% block dashboard %}
+
+{% include 'myapp/navbar.html' %}
+
+<p class="my-10 text-3xl text-blue-500 font-extrabold text-center uppercase">your order</p>
+<div class="flex">
+<div class="flex flex-col w-1/2 container mx-auto mb-10 justify-center items-center">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        
+        {% for c in cartcopy %}
+        <table class="min-w-full text-left text-sm font-light my-12">
+          <thead class="border-b font-medium dark:border-neutral-500">
+            <tr>
+              <th scope="col" class="px-6 py-4">#</th>
+              <th scope="col" class="px-6 py-4 uppercase">name</th>
+              <th scope="col" class="px-6 py-4 uppercase">price</th>
+              <th scope="col" class="px-6 py-4 uppercase">quanity</th>
+              <th scope="col" class="px-6 py-4 uppercase">discount</th>
+              <th scope="col" class="px-6 py-4 uppercase">subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in c %}
+            <tr class="border-b dark:border-neutral-500">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">{{forloop.counter}}</td>
+              <td class="whitespace-nowrap px-6 py-4">{{e.product.product_name}}</td>
+              <td class="whitespace-nowrap px-6 py-4">{{e.product.product_price}}</td>
+              <td class="whitespace-nowrap px-6 py-4">{{e.qty}}</td>
+              <td class="whitespace-nowrap px-6 py-4">{{e.product.product_discount}}</td>
+              <td class="whitespace-nowrap px-6 py-4">{{e.difference}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        
+      {% endfor %}
+
+      
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-1/2 mx-10 space-y-10 h-auto">
+{% for o in ordr %}
+<div class="space-x-10 border-2 p-2">
+
+  <span>{{forloop.counter}}</span>
+  <span>Transaction Id: {{o.transaction_id}}</span> 
+   <span>{{o.amount}}</span> 
+   <span>{{o.status}}</span>
+    
+  </div>
+{% endfor %}
+</div>
+</div>
+{% include 'myapp/footer.html' %}
+
+{% endblock %}

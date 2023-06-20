@@ -1,0 +1,14 @@
+{% extends 'myapp/index.html' %}
+{% block empty_cart %}
+{% include 'myapp/navbar.html' %}
+<div class="w-full h-[91vh] bg-gray-400 flex justify-center items-center">
+    <div class="flex flex-col align-middle">
+
+        
+        <h1 class="text-white font-bold text-3xl capitalize">your cart is empty now </h1>
+        <a href="{% url 'home' %}" class="bg-blue-500 px-7 py-2 text-center uppercase mt-6 font-bold text-red-800 rounded-md">go to home page</a>
+    </div>
+</div>
+
+
+{% endblock %}

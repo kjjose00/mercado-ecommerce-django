@@ -1,0 +1,21 @@
+{% extends 'myapp/index.html' %}
+{% block register %}
+{% include 'myapp/navbar.html' %}
+
+
+<form class="py-12 m-auto flex flex-col w-1/2" method="post">
+    {% csrf_token %}
+    <h1 class="text-3xl text-center mb-6 font-bold uppercase">login</h1>
+    {{form.username.label}}
+    {{form.username}}<br>
+    {{form.password.label}}
+    {{form.password}}
+    <button type="submit" class="bg-blue-500 py-2 mt-7 font-semibold text-white rounded uppercase">login</button>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="alert alert-danger my-3">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+</form>
+{% include 'myapp/footer.html' %}
+{% endblock %}

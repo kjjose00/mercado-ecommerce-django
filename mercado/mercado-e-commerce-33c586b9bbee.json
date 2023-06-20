@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mercado-e-commerce",
+  "private_key_id": "33c586b9bbee3a81229a8661f215489f61834dc0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwWT35mjScJYOc\nlqF4qenwKLaK5WNwxbu+vQ7Oyn2KiEEEMHu+6KvtCFoc8A/TB5PlwfN3XTAHi3LX\n1g4WTs1j1eqxav7LSlvMntiK43spZ8gFVbwANKSOQcdr1QAvnJEWqVO9dJU8L7Iq\n4n4qGQPp2JwLbpnjqISlIVAbkEzhLDGGaW+MmZGdzyQPkZXExTozb42e8AepHKMt\nlvkgZqirgNYd6H9d7HZDtmjqRZPbVwUSDMt2WuK4LZl4J1XLaxK0BVhTAHSwFF9p\nsoiO6g/dcELhjreLfh3g6tXCipViXpdmP4F3lyHzFVYq6NoKTLpJC/U6Q7vBIRtA\nmI784YkdAgMBAAECggEABF5Zli7XQcz+GylyG5Kd/HiNuRggpAEJ+xok3UOP45gn\ngCqRTjPmWmtcDB54TeKAq+7nkJvq3iz6rdUcKTpPhTsd4sJDSJbxejqvI5WqDecH\nwfYTP7AOKYYAoi+3HvbSc0zDicxzC/gkgkJ1HKbc/XSDvRbC0ixxCMQv/1bOSL+s\nb6CRETAFn44NO45V7Oak5j/er8PYL2rMulpIxHAzPQ6F5ZsikkioRr47TQDaT/fI\n3TvsQGfshNa+kVNiB/RCA5GZF6bYG47URJSA1hJgtujdns+CZ2ASRzZX0+HCiL9U\nuQtwgz4eOvC67QixMjqVGeIDhWn5HBVkSdpkXXuZ8wKBgQDrIMU5zibOhwsc2HsJ\n0keII+bXHA06LQH5tGQNQPZkC0cFCalbGkmYotisayOuzIqAZdnr+14zdKzswypM\neKkRstCrK6uiKHinWU01IqdTsi3fr5zuScOqljxYCiAVqCNMVVRu2xSi6bpl0OAi\nArFjSQ6GUduQc9SIVFVgN1ITRwKBgQDAALkmuU878Q06IVEhFDlzKVoMbYPOT4+P\n02RqTOBagOJjY7bf68UnC8ZQNaCfd/V2tvRurztMCfw8HArvaPIaQvE9teM/vche\n/KR90/unOwPcbSJl2uwYvIKmDVCm6Snz4u2B/ITJdEVvo8/CNnlOkcAwKTdIixxr\n77P4oIKKewKBgQDihlDczwq+IIaJRNrM7ISz2XrVNRZdPO1RSAS4bCS039SNOvCp\nb5sF7aX3/sSC7FZnOzkHS8ZGpprPA3vl7r1b6r10m38gnAMZn0Rt87PnQ5tEjOkQ\n/Yn/9/utChw9IR7YtMDCiFjKV4mX+/NjcNq7f6/5ojV5Zs6UhUM3jjSJkwKBgC5S\nPlkETgRVFG7YyNzlJzMMX+gtp6XndegqBMjMgTf0bimyTdVZ6TeRVKfXOEggxbx9\nSR1G81RV+F98GHtH41jIm7Dap9eh7qxT4U9mDAl9aGIOhkTyexFAsXhkL/gEupVX\nQxugE10SywmzCJV/VObKrQYxe1/qB9JWgyHRf4zvAoGBALwGsztV/N9F9ma+aN0Y\n0Zha1DoUpKmMoI9fWKvgJIIn1SkppgzR2OEWVUSBrKsBEE1ZWpORmOfb4SrIdepk\nNubRXtRBTlsWKS5wv0fllD30o6yydjfJ7BMNrKEys06ZZSnMCtpeeJWRapzOtz7j\nJcnPFyqZKLTv+uHN52HoK/LI\n-----END PRIVATE KEY-----\n",
+  "client_email": "jose-268@mercado-e-commerce.iam.gserviceaccount.com",
+  "client_id": "104379140156877178841",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jose-268%40mercado-e-commerce.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

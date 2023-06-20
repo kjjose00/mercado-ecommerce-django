@@ -1,0 +1,17 @@
+{% extends 'myapp/index.html' %}
+{% load static %}
+
+{% block paymentdone %}
+{% include 'myapp/navbar.html' %}
+<meta http-equiv = "refresh" content = "1; url = {% url 'dashboard' %}" />
+
+<div class="w-screen h-[90vh] bg-slate-500 flex justify-center items-center">
+    <img src="{% static 'myapp/images/hedge-pay-hpay.gif' %}" alt="">
+    <h1 class="capitalize text-2xl font-bold text-white">payment done</h1>
+</div>
+
+
+
+{% include "myapp/footer.html" %}
+{% endblock %}
+
