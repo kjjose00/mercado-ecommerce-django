@@ -75,7 +75,7 @@ def home(request):
 
 def organic_fruits(request):
     p=Products.objects.filter(product_type__contains='Organic Fruits')
-    cart=Cart.objects.filter(user=request.user)
+    cart=Cart.objects.filter(user=request.user.id)
     for obj in p:
 	    obj.difference = obj.product_price - obj.product_discount
 
@@ -84,21 +84,21 @@ def organic_fruits(request):
 
 def organic_vegetables(request):
     p=Products.objects.filter(product_type__contains='Organic Vegetables')
-    cart=Cart.objects.filter(user=request.user)
+    cart=Cart.objects.filter(user=request.user.id)
     for obj in p:
 	    obj.difference = obj.product_price - obj.product_discount
     return render(request,"myapp/organic_vegetables.html",{'p':p,"cart":cart})
 
 def fresh_fruits(request):
     p=Products.objects.filter(product_type__contains='Fresh Fruits')
-    cart=Cart.objects.filter(user=request.user)
+    cart=Cart.objects.filter(user=request.user.id)
     for obj in p:
 	    obj.difference = obj.product_price - obj.product_discount
     return render(request,"myapp/fresh_fruits.html",{'p':p,'cart':cart})
 
 def fresh_vegetables(request):
     p=Products.objects.filter(product_type__contains='Fresh Vegetables')
-    cart=Cart.objects.filter(user=request.user)
+    cart=Cart.objects.filter(user=request.user.id)
     for obj in p:
 	    if obj.product_discount !="":
 		    obj.difference = obj.product_price - obj.product_discount
